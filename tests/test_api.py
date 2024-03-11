@@ -14,6 +14,15 @@ def api():
     )
 
 
+@pytest.fixture
+def test_table():
+    load_dotenv(dotenv_path=".env")
+    ws = environ.get("NINOX_TEST_WORKSPACE")
+    db = environ.get("NINOX_TEST_DATABASE")
+    table = environ.get("NINOX_TEST_TABLE")
+    return ws, db, table
+
+
 class TestApi:
 
     def test_workspaces(self, api):
@@ -30,3 +39,9 @@ class TestApi:
 
         database = api.get_database(workspaces[0]["id"], databases[0]["id"])
         assert len(database["schema"]) > 0
+
+    def test_query(self, api, test_table):
+        ws, db, table = test_table
+        query = f"SELECT * FROM {table}"
+        result = api.query(ws, db, query)
+        assert len(result) > 0

@@ -1,0 +1,29 @@
+[project]
+name = "ninox"
+authors = [{name = "Andrei Paraschiv", email = "andrei@thephpfactory.com"}]
+requires-python = ">=3.8"
+description = "A wrapper for the Ninox DB API"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+keywords = ["database", "web", "api", "ninox"]
+classifiers = [
+    'Environment :: Console',
+    'Environment :: Other Environment',
+    'Development Status :: 4 - Beta',
+    'Intended Audience :: Developers',
+    'License :: OSI Approved :: Apache Software License',
+    'Topic :: Database',
+    'Topic :: Software Development :: Libraries',
+    'Operating System :: OS Independent',
+]
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/AndyTheFactory/ninox-api"
+Repository = "https://github.com/AndyTheFactory/ninox-api.git"
+Issues = "https://github.com/AndyTheFactory/ninox-api/issues"
+Changelog = "https://github.com/AndyTheFactory/ninox-api/blob/master/CHANGELOG.md"
+
+
+[tool.setuptools.dynamic]
+version = {attr = "ninox.__version__"}
